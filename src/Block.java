@@ -13,8 +13,12 @@ public class Block {
         return new int[]{x, y};
     }
 
+    public char getColor() {
+        return color;
+    }
+
     @Override
     public String toString() {
-        return String.valueOf(color);
+        return "x: " + x + " y: " + y + " color: " + color;
     }
 }

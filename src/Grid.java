@@ -8,8 +8,8 @@ public class Grid {
         grid = new Block[10][10];
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
-                char[] colors = "ROYGBP".toCharArray();
-                grid[i][j] = new Block(colors[rand.nextInt(6)], i, j);
+                char[] colors = "ROYGCBP".toCharArray();
+                grid[i][j] = new Block(colors[rand.nextInt(7)], i, j);
             }
         }
     }
