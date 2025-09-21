@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -22,19 +23,30 @@ public class BreakerGame extends Application{
     Label highscore = new Label("Highscore: 0");
     Label score = new Label("Score: 0");
     Label moves = new Label("Moves: 0");
+
     BorderPane screen;
     GridPane board;
+    FlowPane topLabels;
+    Grid gameGrid;
 
     @Override
     public void start(Stage stage) {
         board = new GridPane();
         screen = new BorderPane();
+        topLabels = new FlowPane();
 
-        Grid game = new Grid();
-        Block[][] grid = game.getGrid();
+        topLabels.getChildren().add(score);
+        topLabels.getChildren().add(moves);
+        topLabels.getChildren().add(highscore);
+
+        screen.setTop(topLabels);
+
+        gameGrid = new Grid();
+        Block[][] grid = gameGrid.getGrid();
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
                 final Block b = grid[i][j];
+                gameGrid.setNeighbors(b);
                 Button button = new Button();
                 button.setMinSize(50, 50);
                 button.setStyle("-fx-background-color:" + colors.get(b.getColor()));
@@ -47,8 +59,6 @@ public class BreakerGame extends Application{
         screen.setCenter(board);
 
         Scene scene = new Scene(screen);
-        stage.setHeight(700);
-        stage.setWidth(700);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
