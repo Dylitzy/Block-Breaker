@@ -1,3 +1,5 @@
+package Main;
+
 public class Block {
     private char color;
     private final int x;
