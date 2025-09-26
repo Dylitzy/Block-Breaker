@@ -1,36 +1,39 @@
 package Main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Block {
     private char color;
-    private final int x;
-    private final int y;
-    private final Block[] neighbors;
+    private final int row;
+    private final int col;
+    private final List<Block> neighbors;
 
-    public Block(char color, int x, int y){
+    public Block(char color, int row, int col){
         this.color = color;
-        this.x = x;
-        this.y = y;
-        this.neighbors = new Block[8];
+        this.row = row;
+        this.col = col;
+        this.neighbors = new ArrayList<>();
     }
 
     public int[] getCoordinates(){
-        return new int[]{x, y};
+        return new int[]{row, col};
     }
 
     public char getColor() {
         return color;
     }
 
-    public void setNeighbor(int i, Block b){
-        neighbors[i] = b;
+    public void addNeighbor(Block b){
+        neighbors.add(b);
     }
 
-    public Block[] getNeighbors() {
+    public List<Block> getNeighbors() {
         return neighbors;
     }
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ") color: " + color;
+        return "(" + row + "," + col + ") color: " + color;
     }
 }

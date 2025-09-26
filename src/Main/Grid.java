@@ -18,38 +18,31 @@ public class Grid {
 
     public void setNeighbors(Block b){
         int[] cors = b.getCoordinates();
-        int x = cors[0];
-        int y = cors[1];
-        int i = 0;
+        int row = cors[0];
+        int col = cors[1];
 
-        if (y != 9){
-            for (int j = x != 0 ? x - 1 : x; j <= x + 1; j++){
-                b.setNeighbor(i++, grid[j][y + 1]);
+        if (row != 0){
+            for (int i = col == 0 ? col : col - 1; col == 9 ? i < col + 1 : i <= col + 1; i++){
+                b.addNeighbor(grid[row - 1][i]);
             }
         }
 
-        if (x != 0)
-            b.setNeighbor(i++, grid[x - 1][y]);
-        if (x != 9)
-            b.setNeighbor(i++, grid[x + 1][y]);
+        if (col != 0){
+            b.addNeighbor(grid[row][col - 1]);
+        }
+        if (col != 9){
+            b.addNeighbor(grid[row][col + 1]);
+        }
 
-        if (y != 0){
-            for (int j = x != 0 ? x - 1 : x; j <= x + 1; j++){
-                b.setNeighbor(i++, grid[j][y - 1]);
+        if (row != 9){
+            for (int i = col == 0 ? col : col - 1; col == 9 ? i < col + 1 : i <= col + 1; i++){
+                b.addNeighbor(grid[row + 1][i]);
             }
         }
     }
 
     public void destroy(Block b){
-        int count = 0;
-        Block[] neighbors = b.getNeighbors();
-        for (Block neighbor : neighbors){
-            if (neighbor.getColor() == b.getColor()){
-                count++;
-            }
-        }
-        if (count >= 3){
-        }
+        // stub
     }
 
     public Block[][] getGrid() {
