@@ -5,6 +5,7 @@ import Main.Grid;
 import org.junit.Test;
 import org.junit.Assert;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GridTest {
@@ -28,13 +29,13 @@ public class GridTest {
             g.setNeighbors(test);
         }
 
-        Assert.assertEquals(List.of(grid[0][1], grid[1][0], grid[1][1]), tests.get(0).getNeighbors());
-        Assert.assertEquals(List.of(grid[0][8], grid[1][8], grid[1][9]), tests.get(1).getNeighbors());
-        Assert.assertEquals(List.of(grid[8][0], grid[8][1], grid[9][1]), tests.get(2).getNeighbors());
-        Assert.assertEquals(List.of(grid[8][8], grid[8][9], grid[9][8]), tests.get(3).getNeighbors());
-        Assert.assertEquals(List.of(grid[0][2], grid[0][4], grid[1][2], grid[1][3], grid[1][4]), tests.get(4).getNeighbors());
-        Assert.assertEquals(List.of(grid[4][0], grid[4][1], grid[5][1], grid[6][0], grid[6][1]), tests.get(5).getNeighbors());
-        Assert.assertEquals(List.of(grid[5][6], grid[5][7], grid[5][8], grid[6][6], grid[6][8], grid[7][6], grid[7][7], grid[7][8]), tests.get(6).getNeighbors());
+        Assert.assertEquals(new HashSet<>(List.of(grid[0][1], grid[1][0])), new HashSet<>(tests.get(0).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[0][8], grid[1][9])), new HashSet<>(tests.get(1).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[8][0], grid[9][1])), new HashSet<>(tests.get(2).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[8][9], grid[9][8])), new HashSet<>(tests.get(3).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[0][2], grid[0][4], grid[1][3])), new HashSet<>(tests.get(4).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[4][0], grid[5][1], grid[6][0])), new HashSet<>(tests.get(5).getNeighbors()));
+        Assert.assertEquals(new HashSet<>(List.of(grid[5][7], grid[6][6], grid[6][8], grid[7][7])), new HashSet<>(tests.get(6).getNeighbors()));
     }
 
     @Test

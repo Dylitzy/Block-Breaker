@@ -22,9 +22,10 @@ public class Grid {
         int col = cors[1];
 
         if (row != 0){
-            for (int i = col == 0 ? col : col - 1; col == 9 ? i < col + 1 : i <= col + 1; i++){
-                b.addNeighbor(grid[row - 1][i]);
-            }
+            b.addNeighbor(grid[row - 1][col]);
+        }
+        if (row != 9){
+            b.addNeighbor(grid[row + 1][col]);
         }
 
         if (col != 0){
@@ -32,12 +33,6 @@ public class Grid {
         }
         if (col != 9){
             b.addNeighbor(grid[row][col + 1]);
-        }
-
-        if (row != 9){
-            for (int i = col == 0 ? col : col - 1; col == 9 ? i < col + 1 : i <= col + 1; i++){
-                b.addNeighbor(grid[row + 1][i]);
-            }
         }
     }
 
