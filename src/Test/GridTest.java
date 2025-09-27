@@ -40,6 +40,43 @@ public class GridTest {
 
     @Test
     public void testDestroy(){
-        // stub
+        Grid g = new Grid();
+        Block[][] grid = g.getGrid();
+
+        // test that single-color destroys fail and that simple three-color destroys succeed
+        grid[0][0].setColor('R');
+        grid[0][1].setColor('T'); // 'T' means Test color! :D
+        grid[1][0].setColor('T');
+        grid[1][1].setColor('T');
+
+        Assert.assertEquals(0, g.destroy(grid[0][0]).size());
+        Assert.assertEquals(3, g.destroy(grid[0][1]).size());
+
+        // test that double-color destroys fail and that BFS chains through a whole sequence of color neighbors.
+        grid[0][0].setColor('R');
+        grid[0][1].setColor('R');
+        grid[0][2].setColor('T');
+        grid[1][0].setColor('T');
+        grid[1][1].setColor('T');
+        grid[1][2].setColor('T');
+
+        Assert.assertEquals(0, g.destroy(grid[0][0]).size());
+        Assert.assertEquals(0, g.destroy(grid[0][1]).size());
+        Assert.assertEquals(4, g.destroy(grid[0][2]).size());
+
+        // test that diagonal neighbors are not included
+        for (int i = 0; i < 4; i++){
+            grid[9][i].setColor('T');
+        }
+        grid[8][1].setColor('T');
+        grid[7][2].setColor('T'); // this one shouldn't be destroyed.
+
+        Assert.assertEquals(5, g.destroy(grid[9][0]).size());
+
+        // test a full line
+        for (int i = 0; i < 10; i++){
+            grid[i][6].setColor('X');
+        }
+        Assert.assertEquals(10, g.destroy(grid[1][6]).size());
     }
 }

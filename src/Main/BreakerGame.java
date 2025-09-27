@@ -84,6 +84,7 @@ public class BreakerGame extends Application{
     }
 
     public void action(Block b){
+        //gameGrid.destroy(b);
         System.out.println(b);
     }
 
