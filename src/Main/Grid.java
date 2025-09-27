@@ -11,12 +11,10 @@ public class Grid {
      * Then, set each newly constructed block's neighbors.
      */
     public Grid(){
-        Random rand = new Random();
         grid = new Block[10][10];
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
-                char[] colors = "ROYGCBP".toCharArray();
-                grid[i][j] = new Block(colors[rand.nextInt(7)], i, j);
+                grid[i][j] = new Block(Block.randomColor(), i, j);
             }
         }
 

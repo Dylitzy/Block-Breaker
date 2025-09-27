@@ -38,6 +38,11 @@ public class Block {
         return color;
     }
 
+    public static char randomColor() {
+        char[] colors = "ROYGCBP".toCharArray();
+        return colors[(int) Math.floor(Math.random() * 7)];
+    }
+
     /**
      * Set this block's color to a new color—important for destroy logic
      * @param newColor the new color
