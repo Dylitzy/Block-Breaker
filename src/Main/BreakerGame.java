@@ -34,7 +34,7 @@ public class BreakerGame extends Application{
     Label highscoreLabel;
     Label scoreLabel;
     Label movesLabel;
-    Button NewGame = new Button("New Game");
+    Button NewGame;
 
     BorderPane screen;
     GridPane board;
